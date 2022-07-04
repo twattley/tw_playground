@@ -8,8 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Echo Push
+      - name: load client
         run: |
           .github/helpers/build.sh b2b ${{ secrets.PAT_TOKEN }}
         shell: bash
+
+      - name: check access to client
+        run: |
+          cd client
+          ls -la
+        shell: bash
+
+
           

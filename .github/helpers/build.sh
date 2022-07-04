@@ -15,5 +15,3 @@ echo 'Building RPM from environment: '$environment_name
 
 rm -rf ./client
 git clone --branch $environment_name https://${token}:x-oauth-basic@github.com/twattley/react-graphql.git client
-cd client
-ls -la
