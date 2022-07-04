@@ -2,7 +2,6 @@ name: Push
 
 on:
   - push
-# test pr
 jobs:
 
   push:
@@ -11,5 +10,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Echo Push
         run: |
-          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
-          echo $GITHUB_ENV
+          .github/helpers/build.sh' b2b
+        shell: bash
+          
