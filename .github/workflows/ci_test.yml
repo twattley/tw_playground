@@ -9,7 +9,7 @@ jobs:
     # if: startsWith(github.ref, 'refs/tags/staging-')
     if: | #{
       github.ref == 'refs/heads/env/staging' ||
-      (github.ref == 'refs/heads/env/production')
+      github.ref == 'refs/heads/env/production'
         
     runs-on: ubuntu-latest
     steps:
