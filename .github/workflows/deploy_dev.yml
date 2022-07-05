@@ -7,12 +7,8 @@ on:
 
 
 jobs:
-  test:
-    # if: |
-    #   github.event.pull_request.merged && 
-    #   github.ref == 'refs/heads/env/dev' || 
-    #   github.ref == 'refs/heads/env/qa' ||
-    #   github.ref == 'refs/heads/env/uat' 
+  deploy-dev:
+    if: github.ref == 'refs/heads/env/dev'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,10 +23,33 @@ jobs:
           ls -la
         shell: bash
 
-      - name: pr merged
+      - name: dev deployed
         run: |
-          echo The PR was merged
+          echo The PR was deployed
         shell: bash
+
+  deploy-uat:
+    if: github.ref == 'refs/heads/env/uat'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: load client
+        run: |
+          .github/helpers/build.sh b2b ${{ secrets.PAT_TOKEN }}
+        shell: bash
+
+      - name: check access to client
+        run: |
+          cd client
+          ls -la
+        shell: bash
+
+      - name: uat deployed
+        run: |
+          echo The PR was deployed
+        shell: bash
+
+
 
 
           
