@@ -9,12 +9,11 @@ on:
 
 jobs:
   test:
-    if: |
-      github.event.pull_request.merged && 
-      github.ref == 'refs/heads/env/dev' || 
-      github.ref == 'refs/heads/env/qa' ||
-      github.ref == 'refs/heads/env/uat' 
-      
+    # if: |
+    #   github.event.pull_request.merged && 
+    #   github.ref == 'refs/heads/env/dev' || 
+    #   github.ref == 'refs/heads/env/qa' ||
+    #   github.ref == 'refs/heads/env/uat' 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
