@@ -3,9 +3,9 @@ name: Push
 on:
   pull_request:
     branches:
-    - env/*
-    # types:
-    #   - closed
+      - env/*
+    types:
+      - closed
 
 jobs:
   test:
