@@ -3,7 +3,7 @@ name: Push
 on:
   pull_request:
     branches:
-    - b2b
+    - env/*
     # types:
     #   - closed
 
