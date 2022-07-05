@@ -4,8 +4,8 @@ on:
   pull_request:
     branches:
     - b2b
-    types:
-      - closed
+    # types:
+    #   - closed
 
 jobs:
   test:
