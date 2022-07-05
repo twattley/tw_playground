@@ -1,10 +1,15 @@
 name: Push
 
 on:
-  - push
-jobs:
+  pull_request:
+    branches:
+    - env/*
+    types:
+      - closed
 
-  push:
+jobs:
+  test:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,6 +22,11 @@ jobs:
         run: |
           cd client
           ls -la
+        shell: bash
+
+      - name: check access to client
+        run: |
+          echo The PR was merged
         shell: bash
 
 
