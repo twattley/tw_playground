@@ -7,7 +7,7 @@ jobs:
   test:
     # if: github.event.pull_request.merged == true
     # if: startsWith(github.ref, 'refs/tags/staging-')
-    if: github.ref == 'refs/heads/env/uat'
+    if: github.ref == 'refs/heads/env/ua'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
