@@ -4,8 +4,8 @@ on:
   pull_request:
     branches:
       - env/*
-    types:
-      - closed
+    # types:
+    #   - closed
 
 jobs:
   test:
