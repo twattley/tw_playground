@@ -9,7 +9,6 @@ env:
   RPM_ENVIRONMENT: b2b-qa
   REACT_APP_RPM_ENVIRONMENT: b2b-qa
 
-
 jobs:
   package-frontend:
     runs-on: ubuntu-latest
@@ -29,6 +28,7 @@ jobs:
       - name: dev deployed
         run: |
           echo $REACT_APP_RPM_ENVIRONMENT
+          echo dev-${GITHUB_SHA::8}-$(date +%s)
         shell: bash
 
 
