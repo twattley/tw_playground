@@ -6,12 +6,12 @@ on:
       - env/qa
 
 env:
-  DAY_OF_WEEK: Monday
+  RPM_ENVIRONMENT: b2b-qa
+  REACT_APP_RPM_ENVIRONMENT: b2b-qa
+
 
 jobs:
   package-frontend:
-    env:
-      RPM_ENVIRONMENT: b2b-qa
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
