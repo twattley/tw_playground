@@ -9,8 +9,7 @@ on:
 
 
 jobs:
-  deploy-dev:
-    if: github.event.pull_request.merged == true
+  package-frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,19 +17,3 @@ jobs:
         run: |
           .github/helpers/build.sh b2b ${{ secrets.PAT_TOKEN }}
         shell: bash
-
-      - name: check access to client
-        run: |
-          cd client
-          ls -la
-        shell: bash
-
-      - name: dev deployed
-        run: |
-          echo The PR was deployed
-        shell: bash
-
-
-
-
-          
