@@ -4,14 +4,12 @@ on:
   push:
     branches:
       - env/qa
-# test
-env:
-  RPM_ENVIRONMENT: b2b-qa
-  REACT_APP_RPM_ENVIRONMENT: ${{ RPM_ENVIRONMENT }}
-
 
 jobs:
   package-frontend:
+    env:
+      RPM_ENVIRONMENT: b2b-qa
+      REACT_APP_RPM_ENVIRONMENT: ${{ RPM_ENVIRONMENT }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
