@@ -22,11 +22,11 @@ jobs:
           echo "Checking out branch: $GITHUB_REF"
 
           if [ "$GITHUB_REF" == "refs/heads/env/qa" ]; then
-            "BALANCE_ENVIRONMENT=echo qa" >> $GITHUB_ENV
+            "BALANCE_ENVIRONMENT=$(echo qa)" >> $GITHUB_ENV
           elif [ "$GITHUB_REF" == "refs/heads/env/dev" ]; then
-            "BALANCE_ENVIRONMENT=echo dev" >> $GITHUB_ENV
+            "BALANCE_ENVIRONMENT=$(echo dev)" >> $GITHUB_ENV
           elif [ "$GITHUB_REF" == "refs/heads/env/uat" ]; then
-            "BALANCE_ENVIRONMENT=echo uat" >> $GITHUB_ENV
+            "BALANCE_ENVIRONMENT=$(echo uat)" >> $GITHUB_ENV
           else
             exit 1
           fi
