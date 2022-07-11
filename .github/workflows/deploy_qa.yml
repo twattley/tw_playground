@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - env/qa
+      - env/dev
 
 env:
   RPM_ENVIRONMENT: b2b-qa
@@ -14,21 +15,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: load client
+      # check which github branch is being pushed to
+      - uses: actions/checkout@v3
+      - name: Set env
         run: |
-          .github/helpers/build.sh b2b ${{ secrets.PAT_TOKEN }}
-        shell: bash
+          echo "Checking out branch: $GITHUB_REF"
 
-      - name: check access to client
-        run: |
-          cd client
-          ls -la
-        shell: bash
-
-      - name: dev deployed
-        run: |
-          echo $REACT_APP_RPM_ENVIRONMENT
-          echo dev-${GITHUB_SHA::8}-$(date +%s)
+          if [ "$GITHUB_REF" == "refs/heads/env/qa" ]; then
+            "BALANCE_ENVIRONMENT=echo qa" >> $GITHUB_ENV
+          elif [ "$GITHUB_REF" == "refs/heads/env/dev" ]; then
+            "BALANCE_ENVIRONMENT=echo dev" >> $GITHUB_ENV
+          elif [ "$GITHUB_REF" == "refs/heads/env/uat" ]; then
+            "BALANCE_ENVIRONMENT=echo uat" >> $GITHUB_ENV
+          else
+            exit 1
+          fi
+      - name: Test
+        run: echo $BALANCE_ENVIRONMENT
         shell: bash
 
 
