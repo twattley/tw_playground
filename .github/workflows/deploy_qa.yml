@@ -21,7 +21,7 @@ jobs:
         run: |
             echo BALANCE_ENVIRONMENT=b2b-$(basename $GITHUB_REF) >> $GITHUB_ENV
       - name: Test
-        run: echo $BALANCE_ENVIRONMENT
+        run: echo $GITHUB_REF
         shell: bash
 
 
